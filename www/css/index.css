@@ -52,7 +52,10 @@ li.indicator {
     box-shadow: 0 0 8px 2px inset;
 }
 
-#dashboard-tab>h1.title {
+#dashboard-tab>h1.title,
+#documentation-tab>h1.title,
+#ufs-tab>h1.title,
+#user-tab>h1.title {
     color: #d4009b;
     margin: .3em 0;
     font-size: 5em;
@@ -70,5 +73,50 @@ li.indicator {
 
 #dashboard-tab>div.row a {
     font-size: 1.5em;
-    margin: 0;;
+    margin: 0;
+    ;
+}
+
+#documentation-tab>.list>.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em;
+    background-color: #f8f8ff;
+    box-shadow: 0 0 5px 2px blueviolet;
+    border-radius: 5px;
+}
+
+#documentation-tab .icon-list .circular.icon {
+    -webkit-box-shadow: 0 0 0 0.1em rgb(0 0 0) inset;
+    box-shadow: 0 0 0 0.1em rgb(0 0 0) inset;
+    background-color: #00000038;
+}
+
+#documentation-tab .item .content {
+    font-size: 1.5em;
+}
+
+#documentation-tab .item .content i.red.icon {
+    color: #db2828 !important;
+    background-color: transparent !important;
+    margin: 0;
+}
+
+#documentation-tab .item .content i.orange.icon {
+    color: #f2711c !important;
+    background-color: transparent !important;
+    margin: 0;
+}
+
+#documentation-tab .item .content i.green.icon {
+    color: #21ba45 !important;
+    background-color: transparent !important;
+    margin: 0;
+}
+
+#documentation-tab .item .content .body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }

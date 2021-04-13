@@ -1,7 +1,8 @@
 (async function () {
-    const response = await getJson();
-
+    $('.ui.accordion').accordion();
     initializeButtonsDashboard();
+
+    const response = await getJson();
 
 })(jQuery);
 

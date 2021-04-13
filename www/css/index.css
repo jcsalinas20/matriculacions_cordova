@@ -122,6 +122,27 @@ li.indicator {
     margin: .3em 0;
 }
 
-#documentation-tab .item .content .body .text{
+#documentation-tab .item .content .body .text {
     margin: 0;
+}
+
+#ufs-tab .ui.accordion {
+    margin: 1.5em;
+}
+
+#ufs-tab .ui.accordion>* {
+    background-color: #fff;
+}
+
+#ufs-tab .ui.accordion>.title {
+    border-radius: 5px;
+    background-color: #782dca;
+    margin: .5em 0 .17em;
+    font-size: 16px;
+    box-shadow: 0 0 2px 2px black;
+}
+
+#ufs-tab .ui.accordion>.content {
+    border-radius: 5px;
+    padding: 10px;
 }

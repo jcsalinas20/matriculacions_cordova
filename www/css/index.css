@@ -145,7 +145,7 @@ li.indicator {
     font-size: 15px;
 }
 
-#documentation-tab .btn-icons>*{
+#documentation-tab .btn-icons>* {
     margin: 0 1px;
     font-size: 1rem;
 }
@@ -157,23 +157,54 @@ li.indicator {
     margin: 0 !important;
 }
 
-#ufs-tab .ui.accordion {
-    margin: 1.5em;
+#ufs-tab>.body {
+    height: 70vh;
+    overflow: auto;
+    text-align: -webkit-center;
+    padding: 20px 0;
 }
 
-#ufs-tab .ui.accordion>* {
-    background-color: #fff;
+#ufs-tab .footer {
+    height: 5vh;
 }
 
-#ufs-tab .ui.accordion>.title {
-    border-radius: 5px;
-    background-color: #782dca;
-    margin: .5em 0 .17em;
-    font-size: 16px;
-    box-shadow: 0 0 2px 2px black;
+#ufs-tab .footer p {
+    font-size: 20px;
+    text-align: center;
+    border-top: 2px solid #a749a5;
+    margin: 0 2rem;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 2px;
 }
 
-#ufs-tab .ui.accordion>.content {
-    border-radius: 5px;
-    padding: 10px;
+#ufs-tab .ui.checked.checkbox {
+    display: block;
+    padding: 10px 0;
+}
+
+#ufs-tab .ui.checked.checkbox:first-of-type {
+    display: block;
+    padding: 0 0 10px 0;
+}
+
+#ufs-tab .ui.checked.checkbox:last-child {
+    display: block;
+    padding: 10px 0 0 0;
+}
+
+#ufs-tab .ui.card,
+#ufs-tab .ui.cards>.card {
+    width: 85%;
+}
+
+#ufs-tab button,
+#user-tab button {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    padding: 0;
 }

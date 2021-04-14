@@ -1,4 +1,5 @@
 let types = null;
+let career = null;
 
 (async function () {
     $('.ui.accordion').accordion();
@@ -6,8 +7,13 @@ let types = null;
     eventOnChangeSelected();
     addEventsToDocsUploads();
 
-    const career = await getJson();
+    career = await getJson();
     types = await getTypes();
+    // types = await getEnabledUfs();
+
+    loadUfs();
+    getTotalPrice();
+    eventButtonLock();
 })(jQuery);
 
 document.addEventListener('deviceready', onDeviceReady, false);
@@ -29,6 +35,67 @@ async function getTypes() {
     return await fetch("/js/types.json").then((res) => {
         return res.json();
     })
+}
+
+function eventButtonLock() {
+    $("#ufs-tab button").on("click", function () {
+        if ($("#ufs-tab button i").hasClass("open")) {
+            $("#ufs-tab button i").removeClass("open");
+            $("#ufs-tab .checkbox input").prop("disabled", true);
+        } else {
+            $("#ufs-tab button i").addClass("open");
+            $("#ufs-tab .checkbox input").prop("disabled", false);
+        }
+    });
+    $("#user-tab button").on("click", function () {
+        if ($("#user-tab button i").hasClass("open")) {
+            $("#user-tab button i").removeClass("open");
+            $("#user-tab .checkbox input").prop("disabled", true);
+        } else {
+            $("#user-tab button i").addClass("open");
+            $("#user-tab .checkbox input").prop("disabled", false);
+        }
+    });
+}
+
+function getTotalPrice() {
+    $("#ufs-tab .total-price").text($("#ufs-tab .ui.checkbox input:checked").length * 10 + " €");
+}
+
+function loadUfs() {
+    for (const key in career.modules) {
+        if (Object.hasOwnProperty.call(career.modules, key)) {
+            const mp = career.modules[key];
+            let card = `<div class="ui card">
+                <div class="content">
+                    <div class="header">${mp.code} - ${mp.name}</div>
+                </div>
+                <div class="content">
+                    <div class="ui small feed">
+                        <div class="event">
+                            <div class="content">`
+            for (const key2 in mp.ufs) {
+                if (Object.hasOwnProperty.call(mp.ufs, key2)) {
+                    let uf = mp.ufs[key2];
+                    let keyCode = mp.code + "-" + uf.code;
+                    card += `
+                    <div class="ui checked checkbox col s12">
+                        <input id="${keyCode}" type="checkbox" checked disabled>
+                        <label for="${keyCode}">${uf.code} - ${uf.name}</label>
+                    </div>`
+                }
+            }
+            card += `</div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            $("#ufs-tab .body").append(card);
+        }
+    }
+    $("#ufs-tab .ui.checkbox input").on("change", function () {
+        getTotalPrice();
+    });
 }
 
 function eventOnChangeSelected() {

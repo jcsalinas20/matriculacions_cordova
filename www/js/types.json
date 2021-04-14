@@ -1,0 +1,36 @@
+{
+    "normal": [
+        "Matricula",
+        "DNI (frontal)",
+        "DNI (darrere)"
+    ],
+    "normal_icons": [
+        "file pdf",
+        "address card",
+        "address card"
+    ],
+    "monoparental": [
+        "Matricula",
+        "Certificat Monoparental",
+        "DNI (frontal)",
+        "DNI (darrere)"
+    ],
+    "monoparental_icons": [
+        "file pdf",
+        "file pdf",
+        "address card",
+        "address card"
+    ],
+    "discapacitat": [
+        "Matricula",
+        "Certificat Discapacitat",
+        "DNI (frontal)",
+        "DNI (darrere)"
+    ],
+    "discapacitat_icons": [
+        "file pdf",
+        "file pdf",
+        "address card",
+        "address card"
+    ]
+}

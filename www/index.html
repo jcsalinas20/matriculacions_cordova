@@ -21,17 +21,6 @@
 
 <head>
     <meta charset="utf-8">
-    <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src *; style-src *; media-src *; img-src *; font-src * data:;">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -65,56 +54,15 @@
     </div>
     <div id="documentation-tab" class="col s12">
         <h1 class="center title">Documents</h1>
-        <div class="ui celled list">
-            <div class="item row">
-                <div class="icon-list col s2 center">
-                    <i class="file pdf icon circular large"></i>
-                </div>
-                <div class="content col s10">
-                    <div class="header">Matricula</div>
-                    <div class="body row">
-                        <p class="text col s3">Estat: </p>
-                        <div class="semaphore col s9">
-                            <i class="circle red icon"></i>
-                            <i class="circle orange outline icon"></i>
-                            <i class="circle green outline icon"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item row">
-                <div class="icon-list col s2 center">
-                    <i class="address card icon circular large"></i>
-                </div>
-                <div class="content col s10">
-                    <div class="header">DNI (frontal)</div>
-                    <div class="body row">
-                        <p class="text col s3">Estat: </p>
-                        <div class="semaphore col s9">
-                            <i class="circle red icon"></i>
-                            <i class="circle orange outline icon"></i>
-                            <i class="circle green outline icon"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item row">
-                <div class="icon-list col s2 center">
-                    <i class="address card icon circular large"></i>
-                </div>
-                <div class="content col s10">
-                    <div class="header">DNI (darrere)</div>
-                    <div class="body row">
-                        <p class="text col s3">Estat: </p>
-                        <div class="semaphore col s9">
-                            <i class="circle red icon"></i>
-                            <i class="circle orange outline icon"></i>
-                            <i class="circle green outline icon"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="select">
+            <select class="ui dropdown" place>
+                <option value="" disabled selected>Tipus de matriculacó</option>
+                <option value="normal">Normal</option>
+                <option value="monoparental">Monoparental</option>
+                <option value="discapacitat">Discapacitat</option>
+            </select>
         </div>
+        <div class="ui celled list"></div>
     </div>
     <div id="ufs-tab" class="col s12">
         <h1 class="center title">UFs</h1>

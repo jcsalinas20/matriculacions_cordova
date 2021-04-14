@@ -85,6 +85,7 @@ li.indicator {
     background-color: #f8f8ff;
     box-shadow: 0 0 5px 2px blueviolet;
     border-radius: 5px;
+    position: relative;
 }
 
 #documentation-tab .icon-list .circular.icon {
@@ -124,6 +125,36 @@ li.indicator {
 
 #documentation-tab .item .content .body .text {
     margin: 0;
+}
+
+#documentation-tab div.select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#documentation-tab div.select select {
+    width: 90%;
+    color: black;
+    font-weight: bold;
+}
+
+#documentation-tab .btn-icons {
+    flex-direction: row;
+    display: flex;
+    font-size: 15px;
+}
+
+#documentation-tab .btn-icons>*{
+    margin: 0 1px;
+    font-size: 1rem;
+}
+
+#documentation-tab .item .icon-eye .blue,
+#documentation-tab .item .icon-camera .blue,
+#documentation-tab .item .icon-upload .blue {
+    background-color: #2196f300 !important;
+    margin: 0 !important;
 }
 
 #ufs-tab .ui.accordion {

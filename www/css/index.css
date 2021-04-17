@@ -82,7 +82,7 @@ li.indicator {
     justify-content: center;
     align-items: center;
     margin: 1.5em;
-    background-color: #f8f8ff;
+    background-color: #ffffffd1;
     box-shadow: 0 0 5px 2px blueviolet;
     border-radius: 5px;
     position: relative;
@@ -158,24 +158,35 @@ li.indicator {
 }
 
 #ufs-tab>.body {
-    height: 70vh;
+    height: 69vh;
     overflow: auto;
     text-align: -webkit-center;
     padding: 20px 0;
+    margin: 0 15px;
+    box-shadow: 0 0 8px 1px;
+    background-color: #212121;
+    border-radius: 4px;
+}
+
+#ufs-tab>.body>.ui.card {
+    background-color: #ffffffd1;
 }
 
 #ufs-tab .footer {
-    height: 5vh;
+    height: 6vh;
 }
 
 #ufs-tab .footer p {
     font-size: 20px;
     text-align: center;
-    border-top: 2px solid #a749a5;
     margin: 0 2rem;
     color: #fff;
     font-weight: bold;
     padding-top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
 }
 
 #ufs-tab .ui.checked.checkbox {
@@ -199,7 +210,7 @@ li.indicator {
 }
 
 #ufs-tab button,
-#user-tab button {
+#user-tab button.lock {
     width: 40px;
     height: 40px;
     position: fixed;
@@ -207,4 +218,41 @@ li.indicator {
     right: 20px;
     margin: 0;
     padding: 0;
+}
+
+#user-tab form {
+    margin: 0 15px;
+    padding: 20px;
+    box-shadow: 0 0 8px 1px;
+    background-color: #212121;
+    border-radius: 9px;
+}
+
+#user-tab form>div.field {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+#user-tab form label {
+    color: #e400ff !important;
+    font-size: 19px !important;
+    margin-bottom: 8px !important;
+}
+
+#user-tab form input[type="text"] {
+    padding: 10px !important;
+    height: 20px !important;
+    box-shadow: 0 0 7px 0px violet !important;
+    margin: auto;
+    width: 90% !important;
+}
+
+#user-tab form button.ui.button.positive.col.s12 {
+    height: 40px;
+    margin-top: 20px;
+}
+
+#user-tab form input[type="text"]:disabled {
+    opacity: .6;
 }

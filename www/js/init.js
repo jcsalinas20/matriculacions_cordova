@@ -1,5 +1,6 @@
 let types = null;
 let career = null;
+let user = null;
 
 (async function () {
     $('.ui.accordion').accordion();
@@ -9,9 +10,11 @@ let career = null;
 
     career = await getJson();
     types = await getTypes();
+    user = await getUser();
     // types = await getEnabledUfs();
 
     loadUfs();
+    loadUser();
     getTotalPrice();
     eventButtonLock();
 })(jQuery);
@@ -37,6 +40,12 @@ async function getTypes() {
     })
 }
 
+async function getUser() {
+    return await fetch("/js/user.json").then((res) => {
+        return res.json();
+    })
+}
+
 function eventButtonLock() {
     $("#ufs-tab button").on("click", function () {
         if ($("#ufs-tab button i").hasClass("open")) {
@@ -47,19 +56,26 @@ function eventButtonLock() {
             $("#ufs-tab .checkbox input").prop("disabled", false);
         }
     });
-    $("#user-tab button").on("click", function () {
+    $("#user-tab button.lock").on("click", function () {
         if ($("#user-tab button i").hasClass("open")) {
             $("#user-tab button i").removeClass("open");
-            $("#user-tab .checkbox input").prop("disabled", true);
+            $("#user-tab input").prop("disabled", true);
         } else {
             $("#user-tab button i").addClass("open");
-            $("#user-tab .checkbox input").prop("disabled", false);
+            $("#user-tab input").prop("disabled", false);
         }
     });
 }
 
 function getTotalPrice() {
     $("#ufs-tab .total-price").text($("#ufs-tab .ui.checkbox input:checked").length * 10 + " €");
+}
+
+function loadUser() {
+    $("#user-tab form input#name").val(user.name).prop("disabled", true);
+    $("#user-tab form input#surname").val(user.surname).prop("disabled", true);
+    $("#user-tab form input#mail").val(user.mail).prop("disabled", true);
+    $("#user-tab form input#dni").val(user.dni).prop("disabled", true);
 }
 
 function loadUfs() {

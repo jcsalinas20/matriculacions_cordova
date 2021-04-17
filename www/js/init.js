@@ -76,7 +76,7 @@ function eventButtonLock() {
 }
 
 function getTotalPrice() {
-    $("#ufs-tab .total-price").text($("#ufs-tab .ui.checkbox input:checked").length * 10 + " €");
+    $("#ufs-tab .total-price").text($("#ufs-tab .ui.checkbox input:checked:not(.blocked)").length * 10 + " €");
 }
 
 function loadUser() {

@@ -1,3 +1,4 @@
+const token = "hXazCMIT8FnAdp4ZYz4xrZauiLzwN2d9uUJ=HZ5O82uCWmg";
 let types = null;
 let career = null;
 let user = null;
@@ -30,25 +31,25 @@ function onDeviceReady() {
 }
 
 async function getJson() {
-    return await fetch("/js/aws.json").then((res) => {
+    return await fetch("http://localhost:1337/api/getAws/" + token).then((res) => {
         return res.json();
     })
 }
 
 async function getTypes() {
-    return await fetch("/js/types.json").then((res) => {
+    return await fetch("http://localhost:1337/api/getTypes/" + token).then((res) => {
         return res.json();
     })
 }
 
 async function getUser() {
-    return await fetch("/js/user.json").then((res) => {
+    return await fetch("http://localhost:1337/api/getUser/" + token).then((res) => {
         return res.json();
     })
 }
 
 async function getCoursework() {
-    return await fetch("/js/coursework.json").then((res) => {
+    return await fetch("http://localhost:1337/api/getCoursework/" + token).then((res) => {
         return res.json();
     })
 }

@@ -68,9 +68,11 @@ function eventButtonLock() {
         if ($("#user-tab button i").hasClass("open")) {
             $("#user-tab button i").removeClass("open");
             $("#user-tab input").prop("disabled", true);
+            $("#user-tab form .field.col").addClass("not-allowed");
         } else {
             $("#user-tab button i").addClass("open");
             $("#user-tab input").prop("disabled", false);
+            $("#user-tab form .field.col").removeClass("not-allowed");
         }
     });
 }
@@ -98,19 +100,25 @@ function loadUfs() {
                 <div class="content">
                     <div class="ui small feed">
                         <div class="event">
-                            <div class="content">`;
+                            <div class="content row">`;
             for (const key2 in mp.ufs) {
                 if (Object.hasOwnProperty.call(mp.ufs, key2)) {
                     let uf = mp.ufs[key2];
                     let keyCode = mp.code + "-" + uf.code;
                     let clazz = "";
                     let blocked = "";
+                    let sizes = "s12 m6 l4";
+                    if (Object.keys(mp.ufs).length === 2) {
+                        sizes = "s12 m6 l6";
+                    } else if (Object.keys(mp.ufs).length === 1) {
+                        sizes = "s12 m12 l12";
+                    }
                     if (coursework.indexOf(keyCode) != -1) {
                         clazz = "passed";
                         blocked = "blocked";
                     }
                     card += `
-                    <div class="ui checked checkbox col s12">
+                    <div class="ui checked checkbox col ${sizes}">
                         <input class="${blocked}" id="${keyCode}" type="checkbox" checked disabled>
                         <label class="${clazz}" for="${keyCode}">${uf.code} - ${uf.name}</label>
                     </div>`;
@@ -135,30 +143,32 @@ function eventOnChangeSelected() {
         $("#documentation-tab>.ui.list").html('');
         for (let i = 0; i < types[selected].length; i++) {
             $("#documentation-tab>.ui.list").append(`            
-        <div class="item row">
-            <div class="icon-list col s2 center">
-                <i class="${types[selected+"_icons"][i]} icon circular large"></i>
-            </div>
-            <div class="content col s10">
-                <div class="header">${types[selected][i]}</div>
-                <div class="body row">
-                    <p class="text col s2">Estat: </p>
-                    <div class="semaphore col s5">
-                        <i class="circle red icon"></i>
-                        <i class="circle orange outline icon"></i>
-                        <i class="circle green outline icon"></i>
-                    </div>
-                    <div class="btn-icons col s5">
-                        <div class="icon-eye">
-                            <i class="eye icon big blue"></i>
+        <div class="col s12 m12 l6">
+            <div class="item">
+                <div class="icon-list col s2 center">
+                    <i class="${types[selected+"_icons"][i]} icon circular large"></i>
+                </div>
+                <div class="content col s10">
+                    <div class="header">${types[selected][i]}</div>
+                    <div class="body row">
+                        <p class="text col s2">Estat: </p>
+                        <div class="semaphore col s5">
+                            <i class="circle red icon"></i>
+                            <i class="circle orange outline icon"></i>
+                            <i class="circle green outline icon"></i>
                         </div>
-                        <div class="icon-camera">
-                            <i class="camera icon big blue"></i>
+                        <div class="btn-icons col s5">
+                            <div class="icon-eye">
+                                <i class="eye icon big blue"></i>
+                            </div>
+                            <div class="icon-camera">
+                                <i class="camera icon big blue"></i>
+                            </div>
+                            <label class="icon-upload" for="file-upload${i}">
+                                <input type="file" style="display: none;" id="file-upload${i}">
+                                <i class="upload icon big blue"></i>
+                            </label>
                         </div>
-                        <label class="icon-upload" for="file-upload${i}">
-                            <input type="file" style="display: none;" id="file-upload${i}">
-                            <i class="upload icon big blue"></i>
-                        </label>
                     </div>
                 </div>
             </div>

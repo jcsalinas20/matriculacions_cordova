@@ -204,9 +204,19 @@ li.indicator {
     padding: 10px 0 0 0;
 }
 
+#ufs-tab .ui.checked.checkbox label {
+    cursor: pointer;
+}
+
 #ufs-tab .ui.card,
 #ufs-tab .ui.cards>.card {
     width: 85%;
+}
+
+
+#ufs-tab .ui.checked.checkbox label.passed {
+    background-color: greenyellow;
+    cursor: not-allowed !important;
 }
 
 #ufs-tab button,

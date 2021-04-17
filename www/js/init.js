@@ -1,6 +1,7 @@
 let types = null;
 let career = null;
 let user = null;
+let coursework = null;
 
 (async function () {
     $('.ui.accordion').accordion();
@@ -11,7 +12,7 @@ let user = null;
     career = await getJson();
     types = await getTypes();
     user = await getUser();
-    // types = await getEnabledUfs();
+    coursework = await getCoursework();
 
     loadUfs();
     loadUser();
@@ -46,14 +47,20 @@ async function getUser() {
     })
 }
 
+async function getCoursework() {
+    return await fetch("/js/coursework.json").then((res) => {
+        return res.json();
+    })
+}
+
 function eventButtonLock() {
     $("#ufs-tab button").on("click", function () {
         if ($("#ufs-tab button i").hasClass("open")) {
             $("#ufs-tab button i").removeClass("open");
-            $("#ufs-tab .checkbox input").prop("disabled", true);
+            $("#ufs-tab .checkbox input:not(.blocked)").prop("disabled", true);
         } else {
             $("#ufs-tab button i").addClass("open");
-            $("#ufs-tab .checkbox input").prop("disabled", false);
+            $("#ufs-tab .checkbox input:not(.blocked)").prop("disabled", false);
         }
     });
     $("#user-tab button.lock").on("click", function () {
@@ -79,6 +86,7 @@ function loadUser() {
 }
 
 function loadUfs() {
+    let cont = 0;
     for (const key in career.modules) {
         if (Object.hasOwnProperty.call(career.modules, key)) {
             const mp = career.modules[key];
@@ -89,16 +97,22 @@ function loadUfs() {
                 <div class="content">
                     <div class="ui small feed">
                         <div class="event">
-                            <div class="content">`
+                            <div class="content">`;
             for (const key2 in mp.ufs) {
                 if (Object.hasOwnProperty.call(mp.ufs, key2)) {
                     let uf = mp.ufs[key2];
                     let keyCode = mp.code + "-" + uf.code;
+                    let clazz = "";
+                    let blocked = "";
+                    if (coursework.indexOf(keyCode) != -1) {
+                        clazz = "passed";
+                        blocked = "blocked";
+                    }
                     card += `
                     <div class="ui checked checkbox col s12">
-                        <input id="${keyCode}" type="checkbox" checked disabled>
-                        <label for="${keyCode}">${uf.code} - ${uf.name}</label>
-                    </div>`
+                        <input class="${blocked}" id="${keyCode}" type="checkbox" checked disabled>
+                        <label class="${clazz}" for="${keyCode}">${uf.code} - ${uf.name}</label>
+                    </div>`;
                 }
             }
             card += `</div>
